@@ -24,7 +24,7 @@
               <h1>ASEAN: Human Development Index</h1>
           </div>
           <p>
-             The Association of Southeast Asian Nations consists of Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand, and Vietnam. Southeast Asian countries have a wide range of HDI values. Throughout the years, these countries have been steadily rising in HDI while others are still underdeveloped. HDI is base on a measure of social and economic development. 
+              Southeast Asian countries have a wide range of Human Development Index values (HDI). HDI is based on a measure of social and economic development. When comparing HDI values, Brunei and Singapore are at the top. Also there is a tremendous gap when comparing Brunei and Singapore's Gross Nation Income to the rest of the countries. As of now, these two countries are the most developed.
           </p>
            <div class = "row">
                <!--http://stackoverflow.com/questions/23765925/cant-insert-a-d3-chart-on-a-bootstrap-div-->
@@ -40,6 +40,8 @@
                     };
                     display(projection, 1);
                </script>
+               
+               
 
                 <div class="col-md-2">
                   <h4>Change map variable:</h4>
@@ -56,10 +58,7 @@
                         <script src="indexCommon.js"></script>
                     
                     <br><br><br>   
-                       <h4>HDI is composed of:</h4>
-                       <h5>Gross National Income</h5>
-                       <h5>Life Expectancy</h5>
-                       <h5>Mean Years of School</h5>
+                      
                     <br><br>
                     <h4>Generate line graph:</h4>
                     <div class="dropdown">
@@ -78,12 +77,22 @@
                     </div> 
                 </div>
             </div>
-            
-            <svg width="400" height="50">
+            <br/>
+            <svg width="400" height="15">
               <rect x="50" y="20" width="150" height="70"
               style="fill:blue;stroke:pink;stroke-width:5;opacity:0" />
-            </svg>
+
+            <p id="myAllign">
+                *The Human Development Index is composed of: Gross Nation Income (GNI) per capita, 
+                                Life Expectancy,
+                                and Mean Years of Schooling</p>
+                
             
+          <!--  <svg width="400" height="50">
+              <rect x="50" y="20" width="150" height="70"
+              style="fill:blue;stroke:pink;stroke-width:5;opacity:0" />
+            </svg> -->
+        
             
             
             
@@ -91,7 +100,7 @@
         <div class = "page-footer">
                 <div class = "container">
                     <div class = "row">
-                        <div class = "col-md-4">
+                        <div class = "col-md-12">
                             <h4 style="font-weight: bold"><br/>Created by</h4>
                             
                                 <p id="myParagraph">
@@ -117,8 +126,9 @@
                                 <p id="myParagraph">
                                     index.html <br/> 
                                     indexCommon.js <br/> 
-                                    Muti/(line)(GNI)(Life)(School).html<br/>
-                                    Muti/(line)(GNI)(Life)(School).js
+                                    Multiline(GNI)(Life)(School).html<br/>
+                                    Multiline(GNI)(Life)(School).js<br/>
+                                    (HDI)(GNI)(Life)(School).json
                                 <p>                       
                         </div>
                         <div class = "col-md-4">
@@ -153,6 +163,11 @@
                                     <br/>
                                     <a href="http://bl.ocks.org/zanarmstrong/05c1e95bf7aa16c4768e" rel="stylesheet">http://bl.ocks.org</a>
 
+                                     <br/>
+                                    <a href="http://www.w3schools.com/js/js_htmldom_nodes.asp" rel="stylesheet">http://www.w3schools.com</a>
+                                    <br/>
+                                    <a href="http://www.w3schools.com/js/js_htmldom_navigation.asp" rel="stylesheet">http://www.w3schools.com/js</a>
+                                    
                                     
 
 
