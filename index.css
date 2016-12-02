@@ -72,6 +72,12 @@ div.page-footer{
 div.col-md-2{
     text-align:center;
 }
+#myAllign { 
+    
+    text-align: left;
+    font-size:10px;
+}
+
 
 #choose-variable {
      
