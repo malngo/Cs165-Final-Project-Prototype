@@ -7,13 +7,10 @@ var display = function (projection_data, switchnumber){
         .domain([.5, .6, .7, .8, .9].map(function(x){return x;}))
         .range(["#ccffd6", "#93e2a3", "#59c66f", "#3aad51", "#1f8e35", "#006d15"]);     //green
     
-    var legend_label = "years"; //label on the legend, defaults to HDI
+    var legend_label = "Years of Schooling"; //label on the legend, defaults to HDI
     var data_file = "HDI.json"; //name of data file, defaults to HDI
     var data_type = "HDI";
-    var on1 = 1;
-    var on2 = 0;
-    //var on3 = 1;
-    //var on4 = 1;
+ 
     
     switch (switchnumber) {
         case 1:
@@ -34,6 +31,8 @@ var display = function (projection_data, switchnumber){
         default: break;
     }
     
+    
+    
     function changeColorHDI() {
         color = d3.scaleThreshold()
         .domain([.5, .6, .7, .8, .9].map(function(x){return x;}))
@@ -45,24 +44,25 @@ var display = function (projection_data, switchnumber){
     }
     
     function changeColorGNI() {
-        //svg.selectAll('g.legend').remove();
+//        svg.selectAll('.legend').remove();
         color = d3.scaleThreshold()
-        .domain([.5, .6, .7, .8, .9].map(function(x){return x;}))
-        .range(["#a3eaff", "#6ec8e6", "#17a5d4", "#0086b3", "#006385", "#00384c"]);     //blue
-        legend_label = "GNI";
+        .domain([2000, 5000, 10000, 20000, 70000].map(function(x){return x;}))
+        .range(["#c4f1ff", "#a3eaff", "#6ec8e6", "#17a5d4", "#0086b3", "#00384c"]);     //blue
+        
+        legend_label = "GNI per capita";
         data_file = "gniMAP.json";
         //data_type = "GNI";
-        on2 = 1;
-        on1 = 0;
+        
         redraw();
         
     }
     
     function changeColorLife() {
-        //svg.selectAll('g.legend').remove();
+//        var svgtemp = d3.selectAll(".map")._groups[0]
+//        svgtemp[0].selectAll('.legend').remove();
         color = d3.scaleThreshold()
-        .domain([67,71,75,79,83].map(function(x){return x;}))
-        .range(["#fff0e0", "#ffcc91", "#ffaf54", "#ff9419", "#e07800", "#ba6400"]);     //orange
+        .domain([67,71,75,78,83].map(function(x){return x;}))
+        .range(["#ffddba", "#ffcc91", "#ffaf54", "#ff9419", "#e07800", "#ba6400"]);     //orange
         legend_label = "Life Expectancy";
         data_file = "lifeMAP.json";
         //data_type = "life_expec";
@@ -70,7 +70,7 @@ var display = function (projection_data, switchnumber){
     }
     
     function changeColorSchool() {
-        //svg.selectAll('legend').remove();
+//        svg.selectAll('.legend').remove();
         
         color = d3.scaleThreshold()
         .domain([5, 6, 7, 8, 9].map(function(x){return x;}))
@@ -84,6 +84,11 @@ var display = function (projection_data, switchnumber){
     redraw();
     
 function redraw() {
+    //Shobbit helped us figure this out
+    //remove the whole html svg element and redraw
+    var countrysvg = document.getElementById("countrysvg");
+    if(countrysvg.childNodes[0])
+        countrysvg.removeChild(countrysvg.childNodes[0])
     
     var svg = d3.select("#countrysvg").append("svg")
         .attr("width", width)
@@ -169,7 +174,7 @@ function redraw() {
             //svg.selectAll("#garbage").attr("opacity", 0);
             //svg.selectAll("#garbage").remove();
     
-            /*
+            
             g.append("text")
                 .attr("class", "caption")
                 .attr("id", "#garbage")
@@ -177,44 +182,8 @@ function redraw() {
                 .attr("y", -25)
                 .attr("fill", "#000")
                 .text(legend_label)
-                .style("opacity",0)
-            */
-            g.append("text")
-                .attr("class", "caption")
-                .attr("id", "#garbage")
-                .attr("x",-445)
-                .attr("y", -25)
-                .attr("fill", "#000")
-                .text("HDI")
-                .style("opacity",on1)
-            
-            g.append("text")
-                .attr("class", "caption")
-                .attr("id", "#garbage")
-                .attr("x",-445)
-                .attr("y", -25)
-                .attr("fill", "#000")
-                .text("GNI")
-                .style("opacity",on2)
-          /*  
-            g.append("text")
-                .attr("class", "caption")
-                .attr("id", "#garbage")
-                .attr("x",-445)
-                .attr("y", -25)
-                .attr("fill", "#000")
-                .text("YEARS")
-                .style("opacity",on)
-            
-            g.append("text")
-                .attr("class", "caption")
-                .attr("id", "#garbage")
-                .attr("x",-445)
-                .attr("y", -25)
-                .attr("fill", "#000")
-                .text("Life Expectancy")
-                .style("opacity",on)
-           */ 
+                
+     
     //============================ADD SOURCES!!!!!!!!!===================================    
     //omar - adding legend 
     //======================================= http://bl.ocks.org/KoGor/5685876
@@ -223,7 +192,7 @@ function redraw() {
     //remove legend before redrawing
     var legendRectSize = 18;
     var legendSpacing = 4;
-    var legend = svg.selectAll('g.legend')
+    var legend = svg.selectAll('.legend')
       .data(color.domain())
       .attr("id", "#garbage")
       .enter()
@@ -250,7 +219,7 @@ function redraw() {
       .attr('x', 22)
       .attr('y', function(d, i){ return height - (i*43) - 550;})
       .text(function(d) { return d; });
-    return svg; //return the svg object to further modification    
+//    return svg; //return the svg object to further modification    
             
         });
 
